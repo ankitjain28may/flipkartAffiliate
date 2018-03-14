@@ -4,8 +4,8 @@ import csv
 import os
 
 # Flipkart Affiliate Keys
-fkAffiliateId = 'ankitjain21'
-fkAffiliateToken = 'd349526c4d45448aa11af14cdd7224aa'
+fkAffiliateId = ''
+fkAffiliateToken = ''
 
 # Folder Name
 directory = 'Products'
