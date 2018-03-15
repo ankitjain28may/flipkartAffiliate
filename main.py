@@ -22,6 +22,7 @@ if not os.path.exists(directory):
     os.makedirs(directory)
 
 # For fetching all the products categories
+print("Fetching Categories of the Products. It takes a while.")
 r_categories = requests.get(
     'https://affiliate-api.flipkart.net/affiliate/api/'
     + fkAffiliateId + '.json'
@@ -29,9 +30,11 @@ r_categories = requests.get(
 # Get Categories from the data
 categories = json.loads(r_categories.text)
 categories = categories['apiGroups']['affiliate']['apiListings']
+print("Fetched total " + str(len(categories)) + " Categories.")
 try:
     # Traverse all the Categories
     for i in categories:
+        print("Fetching products of Category : " + i + "\n")
         # Get API URL of each Product V1.1.0
         url = categories[i]['availableVariants']['v1.1.0']['get']
 
@@ -39,8 +42,10 @@ try:
         r_data = requests.get(url, headers=headers)
         data = json.loads(r_data.text)
         products = data['products']
+        print("Available " + str(len(products)) + " product's data, Creating CSV.")
         # Create CSV file
-        f = open(directory + "/" + i + ".csv", "w+")
+        path = directory + "/" + i + ".csv"
+        f = open(path, "w+")
         writer = csv.writer(f)
         # CSV Header,
         writer.writerow([
@@ -100,6 +105,7 @@ try:
                 pass
         # Close the file object
         f.close()
+        print("Successfully created " + i + ".csv file, Path : " + path)
 except Exception as e:
     print(e)
     pass
