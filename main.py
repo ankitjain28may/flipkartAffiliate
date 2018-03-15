@@ -4,8 +4,8 @@ import csv
 import os
 
 # Flipkart Affiliate Keys
-fkAffiliateId = ''
-fkAffiliateToken = ''
+fkAffiliateId = 'quickguid'
+fkAffiliateToken = '4bdce4f2968c474f86797f2af1fd831d'
 
 # Folder Name
 directory = 'Products'
@@ -30,11 +30,11 @@ r_categories = requests.get(
 # Get Categories from the data
 categories = json.loads(r_categories.text)
 categories = categories['apiGroups']['affiliate']['apiListings']
-print("Fetched total " + str(len(categories)) + " Categories.")
+print("Fetched total " + str(len(categories)) + " Categories.\n")
 try:
     # Traverse all the Categories
     for i in categories:
-        print("Fetching products of Category : " + i + "\n")
+        print("Fetching products of Category : " + i)
         # Get API URL of each Product V1.1.0
         url = categories[i]['availableVariants']['v1.1.0']['get']
 
@@ -105,7 +105,7 @@ try:
                 pass
         # Close the file object
         f.close()
-        print("Successfully created " + i + ".csv file, Path : " + path)
+        print("Successfully created " + i + ".csv file, Path : " + path + "\n")
 except Exception as e:
     print(e)
     pass
