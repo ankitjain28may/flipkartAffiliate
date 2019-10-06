@@ -1,0 +1,4 @@
+requests==2.22.0
+python-csv==0.0.11
+jsonlib==1.6.1
+os-win==4.3.2
