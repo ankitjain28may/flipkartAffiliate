@@ -7,7 +7,11 @@
 
 2- `sudo apt-get install python3-pip` (For Ubuntu Users)
 
-3- Install all these package `requests `, `csv`, `json`, `os`
+3- Install the required packages by running the following command:
+
+```
+   pip install -r requirements.txt
+```
 
 4- Add your [Flipkart Affiliate](https://affiliate.flipkart.com/api/api-token) Keys in the file `main.py`
 
